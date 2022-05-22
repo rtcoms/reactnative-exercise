@@ -15,3 +15,5 @@ Following detures are included:
 
 
 # Demo video
+
+https://github.com/rtcoms/reactnative-exercise/blob/main/reactnative-demo-2022-05-22_22.54.04.mkv

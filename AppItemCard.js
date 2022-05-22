@@ -7,8 +7,9 @@ function AppItemCard({item}) {
   console.log(item);
   const navigation = useNavigation();
 
+
   return (
-    <Pressable cursor='pointer'  onPress={() => {console.log("I'm Pressed"); navigation.navigate('Details', {item: item})}}>
+    <Pressable onPress={() => { console.log("I'm Pressed"); navigation.navigate('Details', {item: item})}}>
       <HStack w="100%" justifyContent="space-between" alignItems="center" >
         <Text>{item.title}</Text>
         <Avatar size="48px" source={{ uri: item.image}} />

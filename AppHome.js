@@ -3,25 +3,11 @@ import { Pressable, Avatar, ScrollView, VStack, Center, Box, Heading, HStack, Ch
 import { IOScrollView, InView } from 'react-native-intersection-observer'
 import { Choose, When, Otherwise } from 'babel-plugin-jsx-control-statements'
 import AppItemCard from './AppItemCard';
+import useStore from './AppState';
 
 function AppHome({ navigation }) {
-  const items = [
-    { title: "Title 1", image: 'https://picsum.photos/200', description: 'Description 1' },
-    { title: "Title 2", image: 'https://picsum.photos/200', description: 'Description 2' },
-    { title: "Title 3", image: 'https://picsum.photos/200', description: 'Description 3' },
-    { title: "Title 4", image: 'https://picsum.photos/200', description: 'Description 4' },
-    { title: "Title 5", image: 'https://picsum.photos/200', description: 'Description 5' },
-    { title: "Title 6", image: 'https://picsum.photos/200', description: 'Description 6' },
-    { title: "Title 7", image: 'https://picsum.photos/200', description: 'Description 7' },
-    { title: "Title 8", image: 'https://picsum.photos/200', description: 'Description 8' },
-    { title: "Title 9", image: 'https://picsum.photos/200', description: 'Description 9' },
-    { title: "Title 10", image: 'https://picsum.photos/200', description: 'Description 10' },
-    { title: "Title 11", image: 'https://picsum.photos/200', description: 'Description 11' },
-    { title: "Title 12", image: 'https://picsum.photos/200', description: 'Description 12' },
-    { title: "Title 13", image: 'https://picsum.photos/200', description: 'Description 13' },
-    { title: "Title 14", image: 'https://picsum.photos/200', description: 'Description 14' },
-    { title: "Title 15", image: 'https://picsum.photos/200', description: 'Description 15' },
-  ];
+  const items = useStore(state => state.items);
+  const addFeedItems = useStore((state) => state.generateItems);
 
   return (
     <IOScrollView>
@@ -31,10 +17,10 @@ function AppHome({ navigation }) {
             <Heading mb="2" size="md">Items List</Heading>
               <VStack space={200}>
                 {items.map((item, index) =>
-                  <Choose key={item.title + index.toString()} key={'choose' +item.title + index.toString()}>
-                    <When condition={ (index + 1) >= 10 && (index + 1) % 5 == 0 } key={'when' + item.title + index.toString()}>
-                      <InView onChange={(inView) => console.log('Inview:', inView)} triggerOnce={true} key={'inview' +item.title + index.toString()}>
-                        <AppItemCard item={item} navigation={navigation} key={'card' +item.title + index.toString()}></AppItemCard>
+                  <Choose key={item.title + index.toString()} key={'choose' + index.toString()}>
+                    <When condition={ (index + 1) >= 10 && (index + 1) % 5 == 0 } key={'when' + index.toString()}>
+                      <InView onChange={(inView) => { console.log('Inview:', inView); addFeedItems(index + 1 + 5);}} triggerOnce={true} key={'inview' + index.toString()}>
+                        <AppItemCard item={item} index={index} navigation={navigation} key={'card' + index.toString()}></AppItemCard>
                       </InView>
                     </When>
                     <Otherwise>

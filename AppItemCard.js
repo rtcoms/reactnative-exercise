@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Avatar, ScrollView, VStack, Center, Box, Heading, HStack, Checkbox, Input, IconButton, Icon, Text, useToast, Feather, Entypo, Image } from 'native-base';
+import { Pressable, Avatar, HStack, Text } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 
 function AppItemCard({item}) {
@@ -10,7 +10,7 @@ function AppItemCard({item}) {
 
   return (
     <Pressable onPress={() => { console.log("I'm Pressed"); navigation.navigate('Details', {item: item})}}>
-      <HStack w="100%" justifyContent="space-between" alignItems="center" >
+      <HStack w="100%" justifyContent="space-between" alignItems="center" borderWidth="2">
         <Text>{item.title}</Text>
         <Avatar size="48px" source={{ uri: item.image}} />
       </HStack>

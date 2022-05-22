@@ -28,7 +28,7 @@ const useStore = create(set => ({
   ],
 
   generateItems: (index) => {
-    console.log('-----GNERATING ITEMS', index);
+    console.log('-----GNERATING ITEMS for card index:', index);
     let numberRange = Array((index + 10 + 1) - (index + 6)).fill().map((_, idx) => index + 6 + idx);
 
     let generatedItems =  numberRange.map((num) => generateItem(num) );

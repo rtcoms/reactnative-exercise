@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Avatar, ScrollView, VStack, Center, Box, Heading, HStack, Checkbox, Input, IconButton, Icon, Text, useToast, Feather, Entypo, Image } from 'native-base';
+import { ScrollView, VStack, Center, Box, Heading } from 'native-base';
 import { IOScrollView, InView } from 'react-native-intersection-observer'
 import { Choose, When, Otherwise } from 'babel-plugin-jsx-control-statements'
 import AppItemCard from './AppItemCard';

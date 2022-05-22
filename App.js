@@ -1,10 +1,9 @@
 import React from 'react';
 import { NativeBaseProvider } from 'native-base';
-import { Pressable, Avatar, ScrollView, VStack, Center, Box, Heading, HStack, Checkbox, Input, IconButton, Icon, Text, useToast, Feather, Entypo, Image } from 'native-base';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AppHome from './AppHome';
-import AppDetails from './AppDetails';
+import AppHome from './AppItemFeed';
+import AppDetails from './AppItemDetails';
 
 
 const App = () => {

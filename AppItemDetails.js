@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Avatar, ScrollView, VStack, Center, Box, Heading, HStack, Checkbox, Input, IconButton, Icon, Text, useToast, Feather, Entypo, Image } from 'native-base';
+import { Avatar, VStack, Box, Text } from 'native-base';
 
 function AppDetails({ navigation, route }) {
   console.log('---app details');

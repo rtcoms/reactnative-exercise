@@ -1,5 +1,8 @@
 import React from 'react';
 import { Pressable, Avatar, ScrollView, VStack, Center, Box, Heading, HStack, Checkbox, Input, IconButton, Icon, Text, useToast, Feather, Entypo, Image } from 'native-base';
+import { IOScrollView, InView } from 'react-native-intersection-observer'
+import { Choose, When, Otherwise } from 'babel-plugin-jsx-control-statements'
+import AppItemCard from './AppItemCard';
 
 function AppHome({ navigation }) {
   const items = [
@@ -18,43 +21,33 @@ function AppHome({ navigation }) {
     { title: "Title 13", image: 'https://picsum.photos/200', description: 'Description 13' },
     { title: "Title 14", image: 'https://picsum.photos/200', description: 'Description 14' },
     { title: "Title 15", image: 'https://picsum.photos/200', description: 'Description 15' },
-    { title: "Title 16", image: 'https://picsum.photos/200', description: 'Description 16' },
-    { title: "Title 17", image: 'https://picsum.photos/200', description: 'Description 17' },
-    { title: "Title 18", image: 'https://picsum.photos/200', description: 'Description 18' },
-    { title: "Title 19", image: 'https://picsum.photos/200', description: 'Description 19' },
-    { title: "Title 20", image: 'https://picsum.photos/200', description: 'Description 20' },
-    { title: "Title 21", image: 'https://picsum.photos/200', description: 'Description 21' },
-    { title: "Title 22", image: 'https://picsum.photos/200', description: 'Description 22' },
-    { title: "Title 23", image: 'https://picsum.photos/200', description: 'Description 23' },
-    { title: "Title 24", image: 'https://picsum.photos/200', description: 'Description 24' },
-    { title: "Title 25", image: 'https://picsum.photos/200', description: 'Description 25' },
-    { title: "Title 26", image: 'https://picsum.photos/200', description: 'Description 26' },
-    { title: "Title 27", image: 'https://picsum.photos/200', description: 'Description 27' },
-    { title: "Title 28", image: 'https://picsum.photos/200', description: 'Description 28' },
-    { title: "Title 29", image: 'https://picsum.photos/200', description: 'Description 29' },
-    { title: "Title 30", image: 'https://picsum.photos/200', description: 'Description 30' },
   ];
 
   return (
+    <IOScrollView>
     <ScrollView>
         <Center w="100%">
           <Box maxW="300" w="100%">
             <Heading mb="2" size="md">Items List</Heading>
-            <VStack>
               <VStack space={200}>
                 {items.map((item, index) =>
-                  <Pressable key={item.title + index.toString()} onPress={() => {console.log("I'm Pressed"); navigation.navigate('Details', {item: item})}}>
-                    <HStack w="100%" justifyContent="space-between" alignItems="center" >
-                      <Text>{item.title}</Text>
-                      <Avatar size="48px" source={{ uri: item.image}} />
-                    </HStack>
-                  </Pressable>)
+                  <Choose key={item.title + index.toString()} key={'choose' +item.title + index.toString()}>
+                    <When condition={ (index + 1) >= 10 && (index + 1) % 5 == 0 } key={'when' + item.title + index.toString()}>
+                      <InView onChange={(inView) => console.log('Inview:', inView)} triggerOnce={true} key={'inview' +item.title + index.toString()}>
+                        <AppItemCard item={item} navigation={navigation} key={'card' +item.title + index.toString()}></AppItemCard>
+                      </InView>
+                    </When>
+                    <Otherwise>
+                      <AppItemCard item={item} key={'card' +item.title + index.toString()}></AppItemCard>
+                    </Otherwise>
+                  </Choose>)
                 }
               </VStack>
-            </VStack>
           </Box>
         </Center>
+
       </ScrollView>
+      </IOScrollView>
   );
 }
 

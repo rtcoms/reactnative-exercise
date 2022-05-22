@@ -52,28 +52,7 @@ const App = () => {
           name="Details"
           component={AppDetails}
           options={({ route }) => ({ title: route.params.item.title })} />
-
       </Stack.Navigator>
-      {/* <AppHome items={list} /> */}
-      {/* <ScrollView>
-        <Center w="100%">
-          <Box maxW="300" w="100%">
-            <Heading mb="2" size="md">Items List</Heading>
-            <VStack>
-              <VStack space={200}>
-                {list.map((item, index) =>
-                  <Pressable key={item.title + index.toString()} onPress={() => console.log("I'm Pressed")}>
-                    <HStack w="100%" justifyContent="space-between" alignItems="center" >
-                      <Text>{item.title}</Text>
-                      <Avatar size="48px" source={{ uri: item.image}} />
-                    </HStack>
-                  </Pressable>)
-                }
-              </VStack>
-            </VStack>
-          </Box>
-        </Center>
-      </ScrollView> */}
     </NativeBaseProvider>
   </NavigationContainer>);
 };

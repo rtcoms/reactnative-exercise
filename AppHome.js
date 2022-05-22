@@ -19,7 +19,7 @@ function AppHome({ navigation }) {
                 {items.map((item, index) =>
                   <Choose key={item.title + index.toString()} key={'choose' + index.toString()}>
                     <When condition={ (index + 1) >= 10 && (index + 1) % 5 == 0 } key={'when' + index.toString()}>
-                      <InView onChange={(inView) => { console.log('Inview:', inView); addFeedItems(index + 1 + 5);}} triggerOnce={true} key={'inview' + index.toString()}>
+                      <InView onChange={(inView) => { console.log('Inview:', inView); addFeedItems(index + 1);}} triggerOnce={true} key={'inview' + index.toString()}>
                         <AppItemCard item={item} index={index} navigation={navigation} key={'card' + index.toString()}></AppItemCard>
                       </InView>
                     </When>

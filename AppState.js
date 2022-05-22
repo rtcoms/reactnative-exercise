@@ -28,9 +28,9 @@ const useStore = create(set => ({
   ],
 
   generateItems: (index) => {
-    console.log('-----GNERATING ITEMS');
-    console.log(index);
-    let numberRange = Array((index + 1+ 5) - (index + 1)).fill().map((_, idx) => index + idx);
+    console.log('-----GNERATING ITEMS', index);
+    let numberRange = Array((index + 10 + 1) - (index + 6)).fill().map((_, idx) => index + 6 + idx);
+
     let generatedItems =  numberRange.map((num) => generateItem(num) );
     set(state => ({items: [...state.items, ...generatedItems]}))
   }

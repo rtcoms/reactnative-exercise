@@ -13,6 +13,9 @@ Following detures are included:
 * ReactNavigation - For navigation and screens
 * jsx-control-statements - For simple control statements in ReactJS
 
+# Things to improve
+* Better organization of files
+* cleaning up some of the components
 
 # Demo video
 

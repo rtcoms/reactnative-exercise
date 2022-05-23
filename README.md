@@ -6,6 +6,10 @@ Following detures are included:
 2) For Item 10, 15, 20 .. and so on, new 5 items are generated an added to the list
 3) Item details page
 
+# Run application
+react-native start --reset-cache
+react-native run-android
+
 # Third part libraries which are used for easier implementation
 
 * Nativebase - For UI components
